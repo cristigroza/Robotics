@@ -1,0 +1,1040 @@
+
+orangutan_app1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000007a0  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000056  00800100  00800100  00000814  2**0
+                  ALLOC
+  2 .stab         000011f4  00000000  00000000  00000814  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      000025ce  00000000  00000000  00001a08  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .comment      00000030  00000000  00000000  00003fd6  2**0
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000088  00000000  00000000  00004006  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000004cb  00000000  00000000  0000408e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000288  00000000  00000000  00004559  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   0000037d  00000000  00000000  000047e1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000f4  00000000  00000000  00004b60  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000027e  00000000  00000000  00004c54  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000129  00000000  00000000  00004ed2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000068  00000000  00000000  00004ffb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 37 03 	jmp	0x66e	; 0x66e <__vector_9>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 a4 01 	jmp	0x348	; 0x348 <__vector_18>
+  4c:	0c 94 0a 03 	jmp	0x614	; 0x614 <__vector_19>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e0 ea       	ldi	r30, 0xA0	; 160
+  7c:	f7 e0       	ldi	r31, 0x07	; 7
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a0 30       	cpi	r26, 0x00	; 0
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	a0 e0       	ldi	r26, 0x00	; 0
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	a6 35       	cpi	r26, 0x56	; 86
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 80 00 	call	0x100	; 0x100 <main>
+  9e:	0c 94 ce 03 	jmp	0x79c	; 0x79c <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <wait_for_sending_to_finish>:
+unsigned char receive_buffer_position = 0;
+char send_buffer[32];
+
+void wait_for_sending_to_finish()
+{
+	while(!serial_send_buffer_empty());
+  a6:	0e 94 93 00 	call	0x126	; 0x126 <serial_send_buffer_empty>
+  aa:	88 23       	and	r24, r24
+  ac:	e1 f3       	breq	.-8      	; 0xa6 <wait_for_sending_to_finish>
+}
+  ae:	08 95       	ret
+
+000000b0 <init_serial>:
+
+void init_serial(){
+	if (!is_serial_init)
+  b0:	80 91 15 01 	lds	r24, 0x0115
+  b4:	81 11       	cpse	r24, r1
+  b6:	0e c0       	rjmp	.+28     	; 0xd4 <init_serial+0x24>
+	{
+		is_serial_init = 1;
+  b8:	81 e0       	ldi	r24, 0x01	; 1
+  ba:	80 93 15 01 	sts	0x0115, r24
+		serial_set_baud_rate(9600);
+  be:	60 e8       	ldi	r22, 0x80	; 128
+  c0:	75 e2       	ldi	r23, 0x25	; 37
+  c2:	80 e0       	ldi	r24, 0x00	; 0
+  c4:	90 e0       	ldi	r25, 0x00	; 0
+  c6:	0e 94 5b 02 	call	0x4b6	; 0x4b6 <serial_set_baud_rate>
+		serial_receive_ring(receive_buffer, sizeof(receive_buffer));
+  ca:	60 e2       	ldi	r22, 0x20	; 32
+  cc:	86 e1       	ldi	r24, 0x16	; 22
+  ce:	91 e0       	ldi	r25, 0x01	; 1
+  d0:	0c 94 a1 01 	jmp	0x342	; 0x342 <serial_receive_ring>
+  d4:	08 95       	ret
+
+000000d6 <serial_send_char>:
+	}
+}
+
+
+void serial_send_char(char ms_char){
+	if (is_serial_init)
+  d6:	90 91 15 01 	lds	r25, 0x0115
+  da:	99 23       	and	r25, r25
+  dc:	49 f0       	breq	.+18     	; 0xf0 <serial_send_char+0x1a>
+	{
+		send_buffer[0] = ms_char;
+  de:	80 93 36 01 	sts	0x0136, r24
+		serial_send(send_buffer,1);
+  e2:	61 e0       	ldi	r22, 0x01	; 1
+  e4:	86 e3       	ldi	r24, 0x36	; 54
+  e6:	91 e0       	ldi	r25, 0x01	; 1
+  e8:	0e 94 07 03 	call	0x60e	; 0x60e <serial_send>
+		wait_for_sending_to_finish();
+  ec:	0c 94 53 00 	jmp	0xa6	; 0xa6 <wait_for_sending_to_finish>
+  f0:	08 95       	ret
+
+000000f2 <test_char>:
+	serial_send_string(merge);
+}
+void test_char(){
+	//serial_send_char('\r');
+	//serial_send_char('\n');
+	serial_send_char('t');
+  f2:	84 e7       	ldi	r24, 0x74	; 116
+  f4:	0e 94 6b 00 	call	0xd6	; 0xd6 <serial_send_char>
+	delay_ms(1000);
+  f8:	88 ee       	ldi	r24, 0xE8	; 232
+  fa:	93 e0       	ldi	r25, 0x03	; 3
+  fc:	0c 94 7f 03 	jmp	0x6fe	; 0x6fe <delay_ms>
+
+00000100 <main>:
+void test_char();
+void test_string();
+void test_num();
+int main()
+{
+	init_serial();
+ 100:	0e 94 58 00 	call	0xb0	; 0xb0 <init_serial>
+	while(1)
+	{
+		test_char();
+ 104:	0e 94 79 00 	call	0xf2	; 0xf2 <test_char>
+ 108:	fd cf       	rjmp	.-6      	; 0x104 <main+0x4>
+
+0000010a <_Z25uart_disable_tx_interrupth.clone.1>:
+ 10a:	e1 ec       	ldi	r30, 0xC1	; 193
+ 10c:	f0 e0       	ldi	r31, 0x00	; 0
+ 10e:	80 81       	ld	r24, Z
+ 110:	8f 7d       	andi	r24, 0xDF	; 223
+ 112:	80 83       	st	Z, r24
+ 114:	08 95       	ret
+
+00000116 <_ZN15OrangutanSerial15sendBufferEmptyEv>:
+ 116:	20 91 01 01 	lds	r18, 0x0101
+ 11a:	81 e0       	ldi	r24, 0x01	; 1
+ 11c:	90 91 03 01 	lds	r25, 0x0103
+ 120:	29 13       	cpse	r18, r25
+ 122:	80 e0       	ldi	r24, 0x00	; 0
+ 124:	08 95       	ret
+
+00000126 <serial_send_buffer_empty>:
+ 126:	0e 94 8b 00 	call	0x116	; 0x116 <_ZN15OrangutanSerial15sendBufferEmptyEv>
+ 12a:	08 95       	ret
+
+0000012c <_ZN15OrangutanSerial21serial_rx_handle_byteEhh>:
+ 12c:	28 2f       	mov	r18, r24
+ 12e:	30 e0       	ldi	r19, 0x00	; 0
+ 130:	f9 01       	movw	r30, r18
+ 132:	ee 0f       	add	r30, r30
+ 134:	ff 1f       	adc	r31, r31
+ 136:	43 e0       	ldi	r20, 0x03	; 3
+ 138:	22 0f       	add	r18, r18
+ 13a:	33 1f       	adc	r19, r19
+ 13c:	4a 95       	dec	r20
+ 13e:	e1 f7       	brne	.-8      	; 0x138 <_ZN15OrangutanSerial21serial_rx_handle_byteEhh+0xc>
+ 140:	e2 0f       	add	r30, r18
+ 142:	f3 1f       	adc	r31, r19
+ 144:	e0 50       	subi	r30, 0x00	; 0
+ 146:	ff 4f       	sbci	r31, 0xFF	; 255
+ 148:	40 85       	ldd	r20, Z+8	; 0x08
+ 14a:	51 85       	ldd	r21, Z+9	; 0x09
+ 14c:	41 15       	cp	r20, r1
+ 14e:	51 05       	cpc	r21, r1
+ 150:	09 f4       	brne	.+2      	; 0x154 <_ZN15OrangutanSerial21serial_rx_handle_byteEhh+0x28>
+ 152:	52 c0       	rjmp	.+164    	; 0x1f8 <_ZN15OrangutanSerial21serial_rx_handle_byteEhh+0xcc>
+ 154:	28 2f       	mov	r18, r24
+ 156:	30 e0       	ldi	r19, 0x00	; 0
+ 158:	f9 01       	movw	r30, r18
+ 15a:	ee 0f       	add	r30, r30
+ 15c:	ff 1f       	adc	r31, r31
+ 15e:	b3 e0       	ldi	r27, 0x03	; 3
+ 160:	22 0f       	add	r18, r18
+ 162:	33 1f       	adc	r19, r19
+ 164:	ba 95       	dec	r27
+ 166:	e1 f7       	brne	.-8      	; 0x160 <_ZN15OrangutanSerial21serial_rx_handle_byteEhh+0x34>
+ 168:	e2 0f       	add	r30, r18
+ 16a:	f3 1f       	adc	r31, r19
+ 16c:	e0 50       	subi	r30, 0x00	; 0
+ 16e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 170:	72 81       	ldd	r23, Z+2	; 0x02
+ 172:	28 2f       	mov	r18, r24
+ 174:	30 e0       	ldi	r19, 0x00	; 0
+ 176:	f9 01       	movw	r30, r18
+ 178:	ee 0f       	add	r30, r30
+ 17a:	ff 1f       	adc	r31, r31
+ 17c:	93 e0       	ldi	r25, 0x03	; 3
+ 17e:	22 0f       	add	r18, r18
+ 180:	33 1f       	adc	r19, r19
+ 182:	9a 95       	dec	r25
+ 184:	e1 f7       	brne	.-8      	; 0x17e <_ZN15OrangutanSerial21serial_rx_handle_byteEhh+0x52>
+ 186:	e2 0f       	add	r30, r18
+ 188:	f3 1f       	adc	r31, r19
+ 18a:	e0 50       	subi	r30, 0x00	; 0
+ 18c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 18e:	94 81       	ldd	r25, Z+4	; 0x04
+ 190:	79 17       	cp	r23, r25
+ 192:	90 f5       	brcc	.+100    	; 0x1f8 <_ZN15OrangutanSerial21serial_rx_handle_byteEhh+0xcc>
+ 194:	28 2f       	mov	r18, r24
+ 196:	30 e0       	ldi	r19, 0x00	; 0
+ 198:	f9 01       	movw	r30, r18
+ 19a:	ee 0f       	add	r30, r30
+ 19c:	ff 1f       	adc	r31, r31
+ 19e:	a3 e0       	ldi	r26, 0x03	; 3
+ 1a0:	22 0f       	add	r18, r18
+ 1a2:	33 1f       	adc	r19, r19
+ 1a4:	aa 95       	dec	r26
+ 1a6:	e1 f7       	brne	.-8      	; 0x1a0 <_ZN15OrangutanSerial21serial_rx_handle_byteEhh+0x74>
+ 1a8:	e2 0f       	add	r30, r18
+ 1aa:	f3 1f       	adc	r31, r19
+ 1ac:	e0 50       	subi	r30, 0x00	; 0
+ 1ae:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1b0:	92 81       	ldd	r25, Z+2	; 0x02
+ 1b2:	49 0f       	add	r20, r25
+ 1b4:	51 1d       	adc	r21, r1
+ 1b6:	fa 01       	movw	r30, r20
+ 1b8:	60 83       	st	Z, r22
+ 1ba:	28 2f       	mov	r18, r24
+ 1bc:	30 e0       	ldi	r19, 0x00	; 0
+ 1be:	f9 01       	movw	r30, r18
+ 1c0:	ee 0f       	add	r30, r30
+ 1c2:	ff 1f       	adc	r31, r31
+ 1c4:	63 e0       	ldi	r22, 0x03	; 3
+ 1c6:	22 0f       	add	r18, r18
+ 1c8:	33 1f       	adc	r19, r19
+ 1ca:	6a 95       	dec	r22
+ 1cc:	e1 f7       	brne	.-8      	; 0x1c6 <_ZN15OrangutanSerial21serial_rx_handle_byteEhh+0x9a>
+ 1ce:	e2 0f       	add	r30, r18
+ 1d0:	f3 1f       	adc	r31, r19
+ 1d2:	e0 50       	subi	r30, 0x00	; 0
+ 1d4:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1d6:	92 81       	ldd	r25, Z+2	; 0x02
+ 1d8:	9f 5f       	subi	r25, 0xFF	; 255
+ 1da:	28 2f       	mov	r18, r24
+ 1dc:	30 e0       	ldi	r19, 0x00	; 0
+ 1de:	f9 01       	movw	r30, r18
+ 1e0:	ee 0f       	add	r30, r30
+ 1e2:	ff 1f       	adc	r31, r31
+ 1e4:	43 e0       	ldi	r20, 0x03	; 3
+ 1e6:	22 0f       	add	r18, r18
+ 1e8:	33 1f       	adc	r19, r19
+ 1ea:	4a 95       	dec	r20
+ 1ec:	e1 f7       	brne	.-8      	; 0x1e6 <_ZN15OrangutanSerial21serial_rx_handle_byteEhh+0xba>
+ 1ee:	e2 0f       	add	r30, r18
+ 1f0:	f3 1f       	adc	r31, r19
+ 1f2:	e0 50       	subi	r30, 0x00	; 0
+ 1f4:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1f6:	92 83       	std	Z+2, r25	; 0x02
+ 1f8:	28 2f       	mov	r18, r24
+ 1fa:	30 e0       	ldi	r19, 0x00	; 0
+ 1fc:	f9 01       	movw	r30, r18
+ 1fe:	ee 0f       	add	r30, r30
+ 200:	ff 1f       	adc	r31, r31
+ 202:	a3 e0       	ldi	r26, 0x03	; 3
+ 204:	22 0f       	add	r18, r18
+ 206:	33 1f       	adc	r19, r19
+ 208:	aa 95       	dec	r26
+ 20a:	e1 f7       	brne	.-8      	; 0x204 <_ZN15OrangutanSerial21serial_rx_handle_byteEhh+0xd8>
+ 20c:	e2 0f       	add	r30, r18
+ 20e:	f3 1f       	adc	r31, r19
+ 210:	e0 50       	subi	r30, 0x00	; 0
+ 212:	ff 4f       	sbci	r31, 0xFF	; 255
+ 214:	42 81       	ldd	r20, Z+2	; 0x02
+ 216:	28 2f       	mov	r18, r24
+ 218:	30 e0       	ldi	r19, 0x00	; 0
+ 21a:	f9 01       	movw	r30, r18
+ 21c:	ee 0f       	add	r30, r30
+ 21e:	ff 1f       	adc	r31, r31
+ 220:	63 e0       	ldi	r22, 0x03	; 3
+ 222:	22 0f       	add	r18, r18
+ 224:	33 1f       	adc	r19, r19
+ 226:	6a 95       	dec	r22
+ 228:	e1 f7       	brne	.-8      	; 0x222 <_ZN15OrangutanSerial21serial_rx_handle_byteEhh+0xf6>
+ 22a:	e2 0f       	add	r30, r18
+ 22c:	f3 1f       	adc	r31, r19
+ 22e:	e0 50       	subi	r30, 0x00	; 0
+ 230:	ff 4f       	sbci	r31, 0xFF	; 255
+ 232:	94 81       	ldd	r25, Z+4	; 0x04
+ 234:	49 17       	cp	r20, r25
+ 236:	01 f5       	brne	.+64     	; 0x278 <_ZN15OrangutanSerial21serial_rx_handle_byteEhh+0x14c>
+ 238:	28 2f       	mov	r18, r24
+ 23a:	30 e0       	ldi	r19, 0x00	; 0
+ 23c:	f9 01       	movw	r30, r18
+ 23e:	ee 0f       	add	r30, r30
+ 240:	ff 1f       	adc	r31, r31
+ 242:	43 e0       	ldi	r20, 0x03	; 3
+ 244:	22 0f       	add	r18, r18
+ 246:	33 1f       	adc	r19, r19
+ 248:	4a 95       	dec	r20
+ 24a:	e1 f7       	brne	.-8      	; 0x244 <_ZN15OrangutanSerial21serial_rx_handle_byteEhh+0x118>
+ 24c:	e2 0f       	add	r30, r18
+ 24e:	f3 1f       	adc	r31, r19
+ 250:	e0 50       	subi	r30, 0x00	; 0
+ 252:	ff 4f       	sbci	r31, 0xFF	; 255
+ 254:	95 81       	ldd	r25, Z+5	; 0x05
+ 256:	99 23       	and	r25, r25
+ 258:	79 f0       	breq	.+30     	; 0x278 <_ZN15OrangutanSerial21serial_rx_handle_byteEhh+0x14c>
+ 25a:	28 2f       	mov	r18, r24
+ 25c:	30 e0       	ldi	r19, 0x00	; 0
+ 25e:	f9 01       	movw	r30, r18
+ 260:	ee 0f       	add	r30, r30
+ 262:	ff 1f       	adc	r31, r31
+ 264:	83 e0       	ldi	r24, 0x03	; 3
+ 266:	22 0f       	add	r18, r18
+ 268:	33 1f       	adc	r19, r19
+ 26a:	8a 95       	dec	r24
+ 26c:	e1 f7       	brne	.-8      	; 0x266 <_ZN15OrangutanSerial21serial_rx_handle_byteEhh+0x13a>
+ 26e:	e2 0f       	add	r30, r18
+ 270:	f3 1f       	adc	r31, r19
+ 272:	e0 50       	subi	r30, 0x00	; 0
+ 274:	ff 4f       	sbci	r31, 0xFF	; 255
+ 276:	12 82       	std	Z+2, r1	; 0x02
+ 278:	08 95       	ret
+
+0000027a <_ZN15OrangutanSerial14receive_inlineEhPchh>:
+ 27a:	90 91 c1 00 	lds	r25, 0x00C1
+ 27e:	9f 77       	andi	r25, 0x7F	; 127
+ 280:	90 93 c1 00 	sts	0x00C1, r25
+ 284:	a8 2f       	mov	r26, r24
+ 286:	b0 e0       	ldi	r27, 0x00	; 0
+ 288:	fd 01       	movw	r30, r26
+ 28a:	ee 0f       	add	r30, r30
+ 28c:	ff 1f       	adc	r31, r31
+ 28e:	93 e0       	ldi	r25, 0x03	; 3
+ 290:	aa 0f       	add	r26, r26
+ 292:	bb 1f       	adc	r27, r27
+ 294:	9a 95       	dec	r25
+ 296:	e1 f7       	brne	.-8      	; 0x290 <_ZN15OrangutanSerial14receive_inlineEhPchh+0x16>
+ 298:	ea 0f       	add	r30, r26
+ 29a:	fb 1f       	adc	r31, r27
+ 29c:	e0 50       	subi	r30, 0x00	; 0
+ 29e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2a0:	71 87       	std	Z+9, r23	; 0x09
+ 2a2:	60 87       	std	Z+8, r22	; 0x08
+ 2a4:	68 2f       	mov	r22, r24
+ 2a6:	70 e0       	ldi	r23, 0x00	; 0
+ 2a8:	fb 01       	movw	r30, r22
+ 2aa:	ee 0f       	add	r30, r30
+ 2ac:	ff 1f       	adc	r31, r31
+ 2ae:	53 e0       	ldi	r21, 0x03	; 3
+ 2b0:	66 0f       	add	r22, r22
+ 2b2:	77 1f       	adc	r23, r23
+ 2b4:	5a 95       	dec	r21
+ 2b6:	e1 f7       	brne	.-8      	; 0x2b0 <_ZN15OrangutanSerial14receive_inlineEhPchh+0x36>
+ 2b8:	e6 0f       	add	r30, r22
+ 2ba:	f7 1f       	adc	r31, r23
+ 2bc:	e0 50       	subi	r30, 0x00	; 0
+ 2be:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2c0:	12 82       	std	Z+2, r1	; 0x02
+ 2c2:	68 2f       	mov	r22, r24
+ 2c4:	70 e0       	ldi	r23, 0x00	; 0
+ 2c6:	fb 01       	movw	r30, r22
+ 2c8:	ee 0f       	add	r30, r30
+ 2ca:	ff 1f       	adc	r31, r31
+ 2cc:	93 e0       	ldi	r25, 0x03	; 3
+ 2ce:	66 0f       	add	r22, r22
+ 2d0:	77 1f       	adc	r23, r23
+ 2d2:	9a 95       	dec	r25
+ 2d4:	e1 f7       	brne	.-8      	; 0x2ce <_ZN15OrangutanSerial14receive_inlineEhPchh+0x54>
+ 2d6:	e6 0f       	add	r30, r22
+ 2d8:	f7 1f       	adc	r31, r23
+ 2da:	e0 50       	subi	r30, 0x00	; 0
+ 2dc:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2de:	44 83       	std	Z+4, r20	; 0x04
+ 2e0:	48 2f       	mov	r20, r24
+ 2e2:	50 e0       	ldi	r21, 0x00	; 0
+ 2e4:	fa 01       	movw	r30, r20
+ 2e6:	ee 0f       	add	r30, r30
+ 2e8:	ff 1f       	adc	r31, r31
+ 2ea:	a3 e0       	ldi	r26, 0x03	; 3
+ 2ec:	44 0f       	add	r20, r20
+ 2ee:	55 1f       	adc	r21, r21
+ 2f0:	aa 95       	dec	r26
+ 2f2:	e1 f7       	brne	.-8      	; 0x2ec <_ZN15OrangutanSerial14receive_inlineEhPchh+0x72>
+ 2f4:	e4 0f       	add	r30, r20
+ 2f6:	f5 1f       	adc	r31, r21
+ 2f8:	e0 50       	subi	r30, 0x00	; 0
+ 2fa:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2fc:	25 83       	std	Z+5, r18	; 0x05
+ 2fe:	28 2f       	mov	r18, r24
+ 300:	30 e0       	ldi	r19, 0x00	; 0
+ 302:	f9 01       	movw	r30, r18
+ 304:	ee 0f       	add	r30, r30
+ 306:	ff 1f       	adc	r31, r31
+ 308:	63 e0       	ldi	r22, 0x03	; 3
+ 30a:	22 0f       	add	r18, r18
+ 30c:	33 1f       	adc	r19, r19
+ 30e:	6a 95       	dec	r22
+ 310:	e1 f7       	brne	.-8      	; 0x30a <_ZN15OrangutanSerial14receive_inlineEhPchh+0x90>
+ 312:	e2 0f       	add	r30, r18
+ 314:	f3 1f       	adc	r31, r19
+ 316:	e0 50       	subi	r30, 0x00	; 0
+ 318:	ff 4f       	sbci	r31, 0xFF	; 255
+ 31a:	80 81       	ld	r24, Z
+ 31c:	88 23       	and	r24, r24
+ 31e:	29 f4       	brne	.+10     	; 0x32a <_ZN15OrangutanSerial14receive_inlineEhPchh+0xb0>
+ 320:	80 91 c1 00 	lds	r24, 0x00C1
+ 324:	80 68       	ori	r24, 0x80	; 128
+ 326:	80 93 c1 00 	sts	0x00C1, r24
+ 32a:	08 95       	ret
+
+0000032c <_ZN15OrangutanSerial11receiveRingEhPch>:
+ 32c:	21 e0       	ldi	r18, 0x01	; 1
+ 32e:	0e 94 3d 01 	call	0x27a	; 0x27a <_ZN15OrangutanSerial14receive_inlineEhPchh>
+ 332:	08 95       	ret
+
+00000334 <_ZN15OrangutanSerial11receiveRingEPch>:
+ 334:	9c 01       	movw	r18, r24
+ 336:	46 2f       	mov	r20, r22
+ 338:	80 e0       	ldi	r24, 0x00	; 0
+ 33a:	b9 01       	movw	r22, r18
+ 33c:	0e 94 96 01 	call	0x32c	; 0x32c <_ZN15OrangutanSerial11receiveRingEhPch>
+ 340:	08 95       	ret
+
+00000342 <serial_receive_ring>:
+ 342:	0e 94 9a 01 	call	0x334	; 0x334 <_ZN15OrangutanSerial11receiveRingEPch>
+ 346:	08 95       	ret
+
+00000348 <__vector_18>:
+ 348:	1f 92       	push	r1
+ 34a:	0f 92       	push	r0
+ 34c:	0f b6       	in	r0, 0x3f	; 63
+ 34e:	0f 92       	push	r0
+ 350:	11 24       	eor	r1, r1
+ 352:	2f 93       	push	r18
+ 354:	3f 93       	push	r19
+ 356:	4f 93       	push	r20
+ 358:	5f 93       	push	r21
+ 35a:	6f 93       	push	r22
+ 35c:	7f 93       	push	r23
+ 35e:	8f 93       	push	r24
+ 360:	9f 93       	push	r25
+ 362:	af 93       	push	r26
+ 364:	bf 93       	push	r27
+ 366:	ef 93       	push	r30
+ 368:	ff 93       	push	r31
+ 36a:	60 91 c6 00 	lds	r22, 0x00C6
+ 36e:	80 e0       	ldi	r24, 0x00	; 0
+ 370:	0e 94 96 00 	call	0x12c	; 0x12c <_ZN15OrangutanSerial21serial_rx_handle_byteEhh>
+ 374:	ff 91       	pop	r31
+ 376:	ef 91       	pop	r30
+ 378:	bf 91       	pop	r27
+ 37a:	af 91       	pop	r26
+ 37c:	9f 91       	pop	r25
+ 37e:	8f 91       	pop	r24
+ 380:	7f 91       	pop	r23
+ 382:	6f 91       	pop	r22
+ 384:	5f 91       	pop	r21
+ 386:	4f 91       	pop	r20
+ 388:	3f 91       	pop	r19
+ 38a:	2f 91       	pop	r18
+ 38c:	0f 90       	pop	r0
+ 38e:	0f be       	out	0x3f, r0	; 63
+ 390:	0f 90       	pop	r0
+ 392:	1f 90       	pop	r1
+ 394:	18 95       	reti
+
+00000396 <_ZN15OrangutanSerial24uart_update_tx_interruptEh>:
+ 396:	28 2f       	mov	r18, r24
+ 398:	30 e0       	ldi	r19, 0x00	; 0
+ 39a:	f9 01       	movw	r30, r18
+ 39c:	ee 0f       	add	r30, r30
+ 39e:	ff 1f       	adc	r31, r31
+ 3a0:	93 e0       	ldi	r25, 0x03	; 3
+ 3a2:	22 0f       	add	r18, r18
+ 3a4:	33 1f       	adc	r19, r19
+ 3a6:	9a 95       	dec	r25
+ 3a8:	e1 f7       	brne	.-8      	; 0x3a2 <_ZN15OrangutanSerial24uart_update_tx_interruptEh+0xc>
+ 3aa:	e2 0f       	add	r30, r18
+ 3ac:	f3 1f       	adc	r31, r19
+ 3ae:	e0 50       	subi	r30, 0x00	; 0
+ 3b0:	ff 4f       	sbci	r31, 0xFF	; 255
+ 3b2:	26 81       	ldd	r18, Z+6	; 0x06
+ 3b4:	37 81       	ldd	r19, Z+7	; 0x07
+ 3b6:	21 15       	cp	r18, r1
+ 3b8:	31 05       	cpc	r19, r1
+ 3ba:	b9 f1       	breq	.+110    	; 0x42a <_ZN15OrangutanSerial24uart_update_tx_interruptEh+0x94>
+ 3bc:	28 2f       	mov	r18, r24
+ 3be:	30 e0       	ldi	r19, 0x00	; 0
+ 3c0:	f9 01       	movw	r30, r18
+ 3c2:	ee 0f       	add	r30, r30
+ 3c4:	ff 1f       	adc	r31, r31
+ 3c6:	a3 e0       	ldi	r26, 0x03	; 3
+ 3c8:	22 0f       	add	r18, r18
+ 3ca:	33 1f       	adc	r19, r19
+ 3cc:	aa 95       	dec	r26
+ 3ce:	e1 f7       	brne	.-8      	; 0x3c8 <_ZN15OrangutanSerial24uart_update_tx_interruptEh+0x32>
+ 3d0:	e2 0f       	add	r30, r18
+ 3d2:	f3 1f       	adc	r31, r19
+ 3d4:	e0 50       	subi	r30, 0x00	; 0
+ 3d6:	ff 4f       	sbci	r31, 0xFF	; 255
+ 3d8:	41 81       	ldd	r20, Z+1	; 0x01
+ 3da:	28 2f       	mov	r18, r24
+ 3dc:	30 e0       	ldi	r19, 0x00	; 0
+ 3de:	f9 01       	movw	r30, r18
+ 3e0:	ee 0f       	add	r30, r30
+ 3e2:	ff 1f       	adc	r31, r31
+ 3e4:	63 e0       	ldi	r22, 0x03	; 3
+ 3e6:	22 0f       	add	r18, r18
+ 3e8:	33 1f       	adc	r19, r19
+ 3ea:	6a 95       	dec	r22
+ 3ec:	e1 f7       	brne	.-8      	; 0x3e6 <_ZN15OrangutanSerial24uart_update_tx_interruptEh+0x50>
+ 3ee:	e2 0f       	add	r30, r18
+ 3f0:	f3 1f       	adc	r31, r19
+ 3f2:	e0 50       	subi	r30, 0x00	; 0
+ 3f4:	ff 4f       	sbci	r31, 0xFF	; 255
+ 3f6:	93 81       	ldd	r25, Z+3	; 0x03
+ 3f8:	49 17       	cp	r20, r25
+ 3fa:	b8 f4       	brcc	.+46     	; 0x42a <_ZN15OrangutanSerial24uart_update_tx_interruptEh+0x94>
+ 3fc:	28 2f       	mov	r18, r24
+ 3fe:	30 e0       	ldi	r19, 0x00	; 0
+ 400:	f9 01       	movw	r30, r18
+ 402:	ee 0f       	add	r30, r30
+ 404:	ff 1f       	adc	r31, r31
+ 406:	43 e0       	ldi	r20, 0x03	; 3
+ 408:	22 0f       	add	r18, r18
+ 40a:	33 1f       	adc	r19, r19
+ 40c:	4a 95       	dec	r20
+ 40e:	e1 f7       	brne	.-8      	; 0x408 <_ZN15OrangutanSerial24uart_update_tx_interruptEh+0x72>
+ 410:	e2 0f       	add	r30, r18
+ 412:	f3 1f       	adc	r31, r19
+ 414:	e0 50       	subi	r30, 0x00	; 0
+ 416:	ff 4f       	sbci	r31, 0xFF	; 255
+ 418:	80 81       	ld	r24, Z
+ 41a:	88 23       	and	r24, r24
+ 41c:	31 f4       	brne	.+12     	; 0x42a <_ZN15OrangutanSerial24uart_update_tx_interruptEh+0x94>
+ 41e:	80 91 c1 00 	lds	r24, 0x00C1
+ 422:	80 62       	ori	r24, 0x20	; 32
+ 424:	80 93 c1 00 	sts	0x00C1, r24
+ 428:	08 95       	ret
+ 42a:	0e 94 85 00 	call	0x10a	; 0x10a <_Z25uart_disable_tx_interrupth.clone.1>
+ 42e:	08 95       	ret
+
+00000430 <_ZN15OrangutanSerial15initUART_inlineEh>:
+ 430:	28 2f       	mov	r18, r24
+ 432:	30 e0       	ldi	r19, 0x00	; 0
+ 434:	f9 01       	movw	r30, r18
+ 436:	ee 0f       	add	r30, r30
+ 438:	ff 1f       	adc	r31, r31
+ 43a:	53 e0       	ldi	r21, 0x03	; 3
+ 43c:	22 0f       	add	r18, r18
+ 43e:	33 1f       	adc	r19, r19
+ 440:	5a 95       	dec	r21
+ 442:	e1 f7       	brne	.-8      	; 0x43c <_ZN15OrangutanSerial15initUART_inlineEh+0xc>
+ 444:	e2 0f       	add	r30, r18
+ 446:	f3 1f       	adc	r31, r19
+ 448:	e0 50       	subi	r30, 0x00	; 0
+ 44a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 44c:	90 81       	ld	r25, Z
+ 44e:	99 23       	and	r25, r25
+ 450:	11 f4       	brne	.+4      	; 0x456 <_ZN15OrangutanSerial15initUART_inlineEh+0x26>
+ 452:	98 e9       	ldi	r25, 0x98	; 152
+ 454:	01 c0       	rjmp	.+2      	; 0x458 <_ZN15OrangutanSerial15initUART_inlineEh+0x28>
+ 456:	98 e1       	ldi	r25, 0x18	; 24
+ 458:	90 93 c1 00 	sts	0x00C1, r25
+ 45c:	0e 94 cb 01 	call	0x396	; 0x396 <_ZN15OrangutanSerial24uart_update_tx_interruptEh>
+ 460:	78 94       	sei
+ 462:	08 95       	ret
+
+00000464 <_ZN15OrangutanSerial11setBaudRateEm>:
+ 464:	ef 92       	push	r14
+ 466:	ff 92       	push	r15
+ 468:	0f 93       	push	r16
+ 46a:	1f 93       	push	r17
+ 46c:	7b 01       	movw	r14, r22
+ 46e:	8c 01       	movw	r16, r24
+ 470:	80 e0       	ldi	r24, 0x00	; 0
+ 472:	0e 94 18 02 	call	0x430	; 0x430 <_ZN15OrangutanSerial15initUART_inlineEh>
+ 476:	c8 01       	movw	r24, r16
+ 478:	b7 01       	movw	r22, r14
+ 47a:	28 ef       	ldi	r18, 0xF8	; 248
+ 47c:	3f ef       	ldi	r19, 0xFF	; 255
+ 47e:	4f ef       	ldi	r20, 0xFF	; 255
+ 480:	5f ef       	ldi	r21, 0xFF	; 255
+ 482:	0e 94 82 03 	call	0x704	; 0x704 <__mulsi3>
+ 486:	60 50       	subi	r22, 0x00	; 0
+ 488:	73 4d       	sbci	r23, 0xD3	; 211
+ 48a:	8e 4c       	sbci	r24, 0xCE	; 206
+ 48c:	9e 4f       	sbci	r25, 0xFE	; 254
+ 48e:	a8 01       	movw	r20, r16
+ 490:	97 01       	movw	r18, r14
+ 492:	e4 e0       	ldi	r30, 0x04	; 4
+ 494:	22 0f       	add	r18, r18
+ 496:	33 1f       	adc	r19, r19
+ 498:	44 1f       	adc	r20, r20
+ 49a:	55 1f       	adc	r21, r21
+ 49c:	ea 95       	dec	r30
+ 49e:	d1 f7       	brne	.-12     	; 0x494 <_ZN15OrangutanSerial11setBaudRateEm+0x30>
+ 4a0:	0e 94 92 03 	call	0x724	; 0x724 <__udivmodsi4>
+ 4a4:	30 93 c5 00 	sts	0x00C5, r19
+ 4a8:	20 93 c4 00 	sts	0x00C4, r18
+ 4ac:	1f 91       	pop	r17
+ 4ae:	0f 91       	pop	r16
+ 4b0:	ff 90       	pop	r15
+ 4b2:	ef 90       	pop	r14
+ 4b4:	08 95       	ret
+
+000004b6 <serial_set_baud_rate>:
+ 4b6:	0e 94 32 02 	call	0x464	; 0x464 <_ZN15OrangutanSerial11setBaudRateEm>
+ 4ba:	08 95       	ret
+
+000004bc <_ZN15OrangutanSerial11uart_tx_isrEh>:
+ 4bc:	28 2f       	mov	r18, r24
+ 4be:	30 e0       	ldi	r19, 0x00	; 0
+ 4c0:	f9 01       	movw	r30, r18
+ 4c2:	ee 0f       	add	r30, r30
+ 4c4:	ff 1f       	adc	r31, r31
+ 4c6:	73 e0       	ldi	r23, 0x03	; 3
+ 4c8:	22 0f       	add	r18, r18
+ 4ca:	33 1f       	adc	r19, r19
+ 4cc:	7a 95       	dec	r23
+ 4ce:	e1 f7       	brne	.-8      	; 0x4c8 <_ZN15OrangutanSerial11uart_tx_isrEh+0xc>
+ 4d0:	e2 0f       	add	r30, r18
+ 4d2:	f3 1f       	adc	r31, r19
+ 4d4:	e0 50       	subi	r30, 0x00	; 0
+ 4d6:	ff 4f       	sbci	r31, 0xFF	; 255
+ 4d8:	46 81       	ldd	r20, Z+6	; 0x06
+ 4da:	57 81       	ldd	r21, Z+7	; 0x07
+ 4dc:	41 15       	cp	r20, r1
+ 4de:	51 05       	cpc	r21, r1
+ 4e0:	09 f4       	brne	.+2      	; 0x4e4 <_ZN15OrangutanSerial11uart_tx_isrEh+0x28>
+ 4e2:	58 c0       	rjmp	.+176    	; 0x594 <_ZN15OrangutanSerial11uart_tx_isrEh+0xd8>
+ 4e4:	28 2f       	mov	r18, r24
+ 4e6:	30 e0       	ldi	r19, 0x00	; 0
+ 4e8:	f9 01       	movw	r30, r18
+ 4ea:	ee 0f       	add	r30, r30
+ 4ec:	ff 1f       	adc	r31, r31
+ 4ee:	93 e0       	ldi	r25, 0x03	; 3
+ 4f0:	22 0f       	add	r18, r18
+ 4f2:	33 1f       	adc	r19, r19
+ 4f4:	9a 95       	dec	r25
+ 4f6:	e1 f7       	brne	.-8      	; 0x4f0 <_ZN15OrangutanSerial11uart_tx_isrEh+0x34>
+ 4f8:	e2 0f       	add	r30, r18
+ 4fa:	f3 1f       	adc	r31, r19
+ 4fc:	e0 50       	subi	r30, 0x00	; 0
+ 4fe:	ff 4f       	sbci	r31, 0xFF	; 255
+ 500:	61 81       	ldd	r22, Z+1	; 0x01
+ 502:	28 2f       	mov	r18, r24
+ 504:	30 e0       	ldi	r19, 0x00	; 0
+ 506:	f9 01       	movw	r30, r18
+ 508:	ee 0f       	add	r30, r30
+ 50a:	ff 1f       	adc	r31, r31
+ 50c:	a3 e0       	ldi	r26, 0x03	; 3
+ 50e:	22 0f       	add	r18, r18
+ 510:	33 1f       	adc	r19, r19
+ 512:	aa 95       	dec	r26
+ 514:	e1 f7       	brne	.-8      	; 0x50e <_ZN15OrangutanSerial11uart_tx_isrEh+0x52>
+ 516:	e2 0f       	add	r30, r18
+ 518:	f3 1f       	adc	r31, r19
+ 51a:	e0 50       	subi	r30, 0x00	; 0
+ 51c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 51e:	93 81       	ldd	r25, Z+3	; 0x03
+ 520:	69 17       	cp	r22, r25
+ 522:	c0 f5       	brcc	.+112    	; 0x594 <_ZN15OrangutanSerial11uart_tx_isrEh+0xd8>
+ 524:	90 91 c0 00 	lds	r25, 0x00C0
+ 528:	95 ff       	sbrs	r25, 5
+ 52a:	34 c0       	rjmp	.+104    	; 0x594 <_ZN15OrangutanSerial11uart_tx_isrEh+0xd8>
+ 52c:	28 2f       	mov	r18, r24
+ 52e:	30 e0       	ldi	r19, 0x00	; 0
+ 530:	f9 01       	movw	r30, r18
+ 532:	ee 0f       	add	r30, r30
+ 534:	ff 1f       	adc	r31, r31
+ 536:	63 e0       	ldi	r22, 0x03	; 3
+ 538:	22 0f       	add	r18, r18
+ 53a:	33 1f       	adc	r19, r19
+ 53c:	6a 95       	dec	r22
+ 53e:	e1 f7       	brne	.-8      	; 0x538 <_ZN15OrangutanSerial11uart_tx_isrEh+0x7c>
+ 540:	e2 0f       	add	r30, r18
+ 542:	f3 1f       	adc	r31, r19
+ 544:	e0 50       	subi	r30, 0x00	; 0
+ 546:	ff 4f       	sbci	r31, 0xFF	; 255
+ 548:	91 81       	ldd	r25, Z+1	; 0x01
+ 54a:	49 0f       	add	r20, r25
+ 54c:	51 1d       	adc	r21, r1
+ 54e:	fa 01       	movw	r30, r20
+ 550:	90 81       	ld	r25, Z
+ 552:	90 93 c6 00 	sts	0x00C6, r25
+ 556:	28 2f       	mov	r18, r24
+ 558:	30 e0       	ldi	r19, 0x00	; 0
+ 55a:	f9 01       	movw	r30, r18
+ 55c:	ee 0f       	add	r30, r30
+ 55e:	ff 1f       	adc	r31, r31
+ 560:	93 e0       	ldi	r25, 0x03	; 3
+ 562:	22 0f       	add	r18, r18
+ 564:	33 1f       	adc	r19, r19
+ 566:	9a 95       	dec	r25
+ 568:	e1 f7       	brne	.-8      	; 0x562 <_ZN15OrangutanSerial11uart_tx_isrEh+0xa6>
+ 56a:	e2 0f       	add	r30, r18
+ 56c:	f3 1f       	adc	r31, r19
+ 56e:	e0 50       	subi	r30, 0x00	; 0
+ 570:	ff 4f       	sbci	r31, 0xFF	; 255
+ 572:	91 81       	ldd	r25, Z+1	; 0x01
+ 574:	9f 5f       	subi	r25, 0xFF	; 255
+ 576:	28 2f       	mov	r18, r24
+ 578:	30 e0       	ldi	r19, 0x00	; 0
+ 57a:	f9 01       	movw	r30, r18
+ 57c:	ee 0f       	add	r30, r30
+ 57e:	ff 1f       	adc	r31, r31
+ 580:	a3 e0       	ldi	r26, 0x03	; 3
+ 582:	22 0f       	add	r18, r18
+ 584:	33 1f       	adc	r19, r19
+ 586:	aa 95       	dec	r26
+ 588:	e1 f7       	brne	.-8      	; 0x582 <_ZN15OrangutanSerial11uart_tx_isrEh+0xc6>
+ 58a:	e2 0f       	add	r30, r18
+ 58c:	f3 1f       	adc	r31, r19
+ 58e:	e0 50       	subi	r30, 0x00	; 0
+ 590:	ff 4f       	sbci	r31, 0xFF	; 255
+ 592:	91 83       	std	Z+1, r25	; 0x01
+ 594:	0e 94 cb 01 	call	0x396	; 0x396 <_ZN15OrangutanSerial24uart_update_tx_interruptEh>
+ 598:	08 95       	ret
+
+0000059a <_ZN15OrangutanSerial4sendEhPch>:
+ 59a:	a0 e0       	ldi	r26, 0x00	; 0
+ 59c:	b1 e0       	ldi	r27, 0x01	; 1
+ 59e:	28 2f       	mov	r18, r24
+ 5a0:	30 e0       	ldi	r19, 0x00	; 0
+ 5a2:	f9 01       	movw	r30, r18
+ 5a4:	ee 0f       	add	r30, r30
+ 5a6:	ff 1f       	adc	r31, r31
+ 5a8:	93 e0       	ldi	r25, 0x03	; 3
+ 5aa:	22 0f       	add	r18, r18
+ 5ac:	33 1f       	adc	r19, r19
+ 5ae:	9a 95       	dec	r25
+ 5b0:	e1 f7       	brne	.-8      	; 0x5aa <_ZN15OrangutanSerial4sendEhPch+0x10>
+ 5b2:	e2 0f       	add	r30, r18
+ 5b4:	f3 1f       	adc	r31, r19
+ 5b6:	ea 0f       	add	r30, r26
+ 5b8:	fb 1f       	adc	r31, r27
+ 5ba:	77 83       	std	Z+7, r23	; 0x07
+ 5bc:	66 83       	std	Z+6, r22	; 0x06
+ 5be:	28 2f       	mov	r18, r24
+ 5c0:	30 e0       	ldi	r19, 0x00	; 0
+ 5c2:	f9 01       	movw	r30, r18
+ 5c4:	ee 0f       	add	r30, r30
+ 5c6:	ff 1f       	adc	r31, r31
+ 5c8:	93 e0       	ldi	r25, 0x03	; 3
+ 5ca:	22 0f       	add	r18, r18
+ 5cc:	33 1f       	adc	r19, r19
+ 5ce:	9a 95       	dec	r25
+ 5d0:	e1 f7       	brne	.-8      	; 0x5ca <_ZN15OrangutanSerial4sendEhPch+0x30>
+ 5d2:	e2 0f       	add	r30, r18
+ 5d4:	f3 1f       	adc	r31, r19
+ 5d6:	ea 0f       	add	r30, r26
+ 5d8:	fb 1f       	adc	r31, r27
+ 5da:	11 82       	std	Z+1, r1	; 0x01
+ 5dc:	28 2f       	mov	r18, r24
+ 5de:	30 e0       	ldi	r19, 0x00	; 0
+ 5e0:	f9 01       	movw	r30, r18
+ 5e2:	ee 0f       	add	r30, r30
+ 5e4:	ff 1f       	adc	r31, r31
+ 5e6:	63 e0       	ldi	r22, 0x03	; 3
+ 5e8:	22 0f       	add	r18, r18
+ 5ea:	33 1f       	adc	r19, r19
+ 5ec:	6a 95       	dec	r22
+ 5ee:	e1 f7       	brne	.-8      	; 0x5e8 <_ZN15OrangutanSerial4sendEhPch+0x4e>
+ 5f0:	e2 0f       	add	r30, r18
+ 5f2:	f3 1f       	adc	r31, r19
+ 5f4:	ea 0f       	add	r30, r26
+ 5f6:	fb 1f       	adc	r31, r27
+ 5f8:	43 83       	std	Z+3, r20	; 0x03
+ 5fa:	0e 94 cb 01 	call	0x396	; 0x396 <_ZN15OrangutanSerial24uart_update_tx_interruptEh>
+ 5fe:	08 95       	ret
+
+00000600 <_ZN15OrangutanSerial4sendEPch>:
+ 600:	9c 01       	movw	r18, r24
+ 602:	46 2f       	mov	r20, r22
+ 604:	80 e0       	ldi	r24, 0x00	; 0
+ 606:	b9 01       	movw	r22, r18
+ 608:	0e 94 cd 02 	call	0x59a	; 0x59a <_ZN15OrangutanSerial4sendEhPch>
+ 60c:	08 95       	ret
+
+0000060e <serial_send>:
+ 60e:	0e 94 00 03 	call	0x600	; 0x600 <_ZN15OrangutanSerial4sendEPch>
+ 612:	08 95       	ret
+
+00000614 <__vector_19>:
+ 614:	1f 92       	push	r1
+ 616:	0f 92       	push	r0
+ 618:	0f b6       	in	r0, 0x3f	; 63
+ 61a:	0f 92       	push	r0
+ 61c:	11 24       	eor	r1, r1
+ 61e:	2f 93       	push	r18
+ 620:	3f 93       	push	r19
+ 622:	4f 93       	push	r20
+ 624:	5f 93       	push	r21
+ 626:	6f 93       	push	r22
+ 628:	7f 93       	push	r23
+ 62a:	8f 93       	push	r24
+ 62c:	9f 93       	push	r25
+ 62e:	af 93       	push	r26
+ 630:	bf 93       	push	r27
+ 632:	ef 93       	push	r30
+ 634:	ff 93       	push	r31
+ 636:	80 e0       	ldi	r24, 0x00	; 0
+ 638:	0e 94 5e 02 	call	0x4bc	; 0x4bc <_ZN15OrangutanSerial11uart_tx_isrEh>
+ 63c:	ff 91       	pop	r31
+ 63e:	ef 91       	pop	r30
+ 640:	bf 91       	pop	r27
+ 642:	af 91       	pop	r26
+ 644:	9f 91       	pop	r25
+ 646:	8f 91       	pop	r24
+ 648:	7f 91       	pop	r23
+ 64a:	6f 91       	pop	r22
+ 64c:	5f 91       	pop	r21
+ 64e:	4f 91       	pop	r20
+ 650:	3f 91       	pop	r19
+ 652:	2f 91       	pop	r18
+ 654:	0f 90       	pop	r0
+ 656:	0f be       	out	0x3f, r0	; 63
+ 658:	0f 90       	pop	r0
+ 65a:	1f 90       	pop	r1
+ 65c:	18 95       	reti
+
+0000065e <_ZN13OrangutanTime17delayMicrosecondsEj>:
+ 65e:	6f 93       	push	r22
+ 660:	64 e0       	ldi	r22, 0x04	; 4
+ 662:	6a 95       	dec	r22
+ 664:	f1 f7       	brne	.-4      	; 0x662 <_ZN13OrangutanTime17delayMicrosecondsEj+0x4>
+ 666:	6f 91       	pop	r22
+ 668:	01 97       	sbiw	r24, 0x01	; 1
+ 66a:	c9 f7       	brne	.-14     	; 0x65e <_ZN13OrangutanTime17delayMicrosecondsEj>
+ 66c:	08 95       	ret
+
+0000066e <__vector_9>:
+ 66e:	2f 92       	push	r2
+ 670:	8f 93       	push	r24
+ 672:	9f 93       	push	r25
+ 674:	2f b6       	in	r2, 0x3f	; 63
+ 676:	80 91 0b 01 	lds	r24, 0x010B
+ 67a:	90 91 0c 01 	lds	r25, 0x010C
+ 67e:	01 96       	adiw	r24, 0x01	; 1
+ 680:	80 93 0b 01 	sts	0x010B, r24
+ 684:	90 93 0c 01 	sts	0x010C, r25
+ 688:	90 e0       	ldi	r25, 0x00	; 0
+ 68a:	80 91 0d 01 	lds	r24, 0x010D
+ 68e:	89 1f       	adc	r24, r25
+ 690:	80 93 0d 01 	sts	0x010D, r24
+ 694:	90 91 13 01 	lds	r25, 0x0113
+ 698:	9c 5f       	subi	r25, 0xFC	; 252
+ 69a:	90 93 13 01 	sts	0x0113, r25
+ 69e:	80 91 12 01 	lds	r24, 0x0112
+ 6a2:	80 51       	subi	r24, 0x10	; 16
+ 6a4:	97 42       	sbci	r25, 0x27	; 39
+ 6a6:	c0 f0       	brcs	.+48     	; 0x6d8 <end>
+ 6a8:	90 93 13 01 	sts	0x0113, r25
+ 6ac:	80 93 12 01 	sts	0x0112, r24
+ 6b0:	80 91 0e 01 	lds	r24, 0x010E
+ 6b4:	90 91 0f 01 	lds	r25, 0x010F
+ 6b8:	01 96       	adiw	r24, 0x01	; 1
+ 6ba:	80 93 0e 01 	sts	0x010E, r24
+ 6be:	90 93 0f 01 	sts	0x010F, r25
+ 6c2:	90 e0       	ldi	r25, 0x00	; 0
+ 6c4:	80 91 10 01 	lds	r24, 0x0110
+ 6c8:	89 1f       	adc	r24, r25
+ 6ca:	80 93 10 01 	sts	0x0110, r24
+ 6ce:	80 91 11 01 	lds	r24, 0x0111
+ 6d2:	89 1f       	adc	r24, r25
+ 6d4:	80 93 11 01 	sts	0x0111, r24
+
+000006d8 <end>:
+ 6d8:	2f be       	out	0x3f, r2	; 63
+ 6da:	9f 91       	pop	r25
+ 6dc:	8f 91       	pop	r24
+ 6de:	2f 90       	pop	r2
+ 6e0:	18 95       	reti
+
+000006e2 <_ZN13OrangutanTime17delayMillisecondsEj>:
+ 6e2:	cf 93       	push	r28
+ 6e4:	df 93       	push	r29
+ 6e6:	ec 01       	movw	r28, r24
+ 6e8:	05 c0       	rjmp	.+10     	; 0x6f4 <_ZN13OrangutanTime17delayMillisecondsEj+0x12>
+ 6ea:	88 ee       	ldi	r24, 0xE8	; 232
+ 6ec:	93 e0       	ldi	r25, 0x03	; 3
+ 6ee:	0e 94 2f 03 	call	0x65e	; 0x65e <_ZN13OrangutanTime17delayMicrosecondsEj>
+ 6f2:	21 97       	sbiw	r28, 0x01	; 1
+ 6f4:	20 97       	sbiw	r28, 0x00	; 0
+ 6f6:	c9 f7       	brne	.-14     	; 0x6ea <_ZN13OrangutanTime17delayMillisecondsEj+0x8>
+ 6f8:	df 91       	pop	r29
+ 6fa:	cf 91       	pop	r28
+ 6fc:	08 95       	ret
+
+000006fe <delay_ms>:
+ 6fe:	0e 94 71 03 	call	0x6e2	; 0x6e2 <_ZN13OrangutanTime17delayMillisecondsEj>
+ 702:	08 95       	ret
+
+00000704 <__mulsi3>:
+ 704:	db 01       	movw	r26, r22
+ 706:	8f 93       	push	r24
+ 708:	9f 93       	push	r25
+ 70a:	0e 94 b4 03 	call	0x768	; 0x768 <__muluhisi3>
+ 70e:	bf 91       	pop	r27
+ 710:	af 91       	pop	r26
+ 712:	a2 9f       	mul	r26, r18
+ 714:	80 0d       	add	r24, r0
+ 716:	91 1d       	adc	r25, r1
+ 718:	a3 9f       	mul	r26, r19
+ 71a:	90 0d       	add	r25, r0
+ 71c:	b2 9f       	mul	r27, r18
+ 71e:	90 0d       	add	r25, r0
+ 720:	11 24       	eor	r1, r1
+ 722:	08 95       	ret
+
+00000724 <__udivmodsi4>:
+ 724:	a1 e2       	ldi	r26, 0x21	; 33
+ 726:	1a 2e       	mov	r1, r26
+ 728:	aa 1b       	sub	r26, r26
+ 72a:	bb 1b       	sub	r27, r27
+ 72c:	fd 01       	movw	r30, r26
+ 72e:	0d c0       	rjmp	.+26     	; 0x74a <__udivmodsi4_ep>
+
+00000730 <__udivmodsi4_loop>:
+ 730:	aa 1f       	adc	r26, r26
+ 732:	bb 1f       	adc	r27, r27
+ 734:	ee 1f       	adc	r30, r30
+ 736:	ff 1f       	adc	r31, r31
+ 738:	a2 17       	cp	r26, r18
+ 73a:	b3 07       	cpc	r27, r19
+ 73c:	e4 07       	cpc	r30, r20
+ 73e:	f5 07       	cpc	r31, r21
+ 740:	20 f0       	brcs	.+8      	; 0x74a <__udivmodsi4_ep>
+ 742:	a2 1b       	sub	r26, r18
+ 744:	b3 0b       	sbc	r27, r19
+ 746:	e4 0b       	sbc	r30, r20
+ 748:	f5 0b       	sbc	r31, r21
+
+0000074a <__udivmodsi4_ep>:
+ 74a:	66 1f       	adc	r22, r22
+ 74c:	77 1f       	adc	r23, r23
+ 74e:	88 1f       	adc	r24, r24
+ 750:	99 1f       	adc	r25, r25
+ 752:	1a 94       	dec	r1
+ 754:	69 f7       	brne	.-38     	; 0x730 <__udivmodsi4_loop>
+ 756:	60 95       	com	r22
+ 758:	70 95       	com	r23
+ 75a:	80 95       	com	r24
+ 75c:	90 95       	com	r25
+ 75e:	9b 01       	movw	r18, r22
+ 760:	ac 01       	movw	r20, r24
+ 762:	bd 01       	movw	r22, r26
+ 764:	cf 01       	movw	r24, r30
+ 766:	08 95       	ret
+
+00000768 <__muluhisi3>:
+ 768:	0e 94 bf 03 	call	0x77e	; 0x77e <__umulhisi3>
+ 76c:	a5 9f       	mul	r26, r21
+ 76e:	90 0d       	add	r25, r0
+ 770:	b4 9f       	mul	r27, r20
+ 772:	90 0d       	add	r25, r0
+ 774:	a4 9f       	mul	r26, r20
+ 776:	80 0d       	add	r24, r0
+ 778:	91 1d       	adc	r25, r1
+ 77a:	11 24       	eor	r1, r1
+ 77c:	08 95       	ret
+
+0000077e <__umulhisi3>:
+ 77e:	a2 9f       	mul	r26, r18
+ 780:	b0 01       	movw	r22, r0
+ 782:	b3 9f       	mul	r27, r19
+ 784:	c0 01       	movw	r24, r0
+ 786:	a3 9f       	mul	r26, r19
+ 788:	70 0d       	add	r23, r0
+ 78a:	81 1d       	adc	r24, r1
+ 78c:	11 24       	eor	r1, r1
+ 78e:	91 1d       	adc	r25, r1
+ 790:	b2 9f       	mul	r27, r18
+ 792:	70 0d       	add	r23, r0
+ 794:	81 1d       	adc	r24, r1
+ 796:	11 24       	eor	r1, r1
+ 798:	91 1d       	adc	r25, r1
+ 79a:	08 95       	ret
+
+0000079c <_exit>:
+ 79c:	f8 94       	cli
+
+0000079e <__stop_program>:
+ 79e:	ff cf       	rjmp	.-2      	; 0x79e <__stop_program>
