@@ -1,4 +1,6 @@
-main.d main.o: .././main.c \
+serial/tests/serialTests.d serial/tests/serialTests.o: \
+ ../serial/tests/serialTests.c ../serial/tests/serialTests.h \
+ ../serial/tests/../serial.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\pololu\orangutan.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\pololu\OrangutanAnalog/OrangutanAnalog.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\avr\io.h \
@@ -43,9 +45,11 @@ main.d main.o: .././main.c \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\pololu\OrangutanX2/OrangutanX2.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\pololu\orangutanresources\include\orangutanmodel.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\pololu\OrangutanSPIMaster/OrangutanSPIMaster.h \
- c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\pololu\workaround.h \
- .././serial/serial.h .././serial/tests/serialTests.h \
- .././digital_IO/digital_IO.h .././encoders/encoders.h
+ c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\pololu\workaround.h
+
+../serial/tests/serialTests.h:
+
+../serial/tests/../serial.h:
 
 c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\pololu\orangutan.h:
 
@@ -136,11 +140,3 @@ c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-g
 c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\pololu\OrangutanSPIMaster/OrangutanSPIMaster.h:
 
 c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\pololu\workaround.h:
-
-.././serial/serial.h:
-
-.././serial/tests/serialTests.h:
-
-.././digital_IO/digital_IO.h:
-
-.././encoders/encoders.h:

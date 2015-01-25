@@ -129,6 +129,30 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ADC\analogReader.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ADC\analogReader.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ADC\tests\analogReaderTests.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ADC\tests\analogReaderTests.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="digital_IO\digital_IO.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="digital_IO\digital_IO.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="encoders\encoders.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="encoders\encoders.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="serial\serial.c">
       <SubType>compile</SubType>
     </Compile>
@@ -136,6 +160,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="serial\tests\serialTests.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="serial\tests\serialTests.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="util\util.c">
@@ -146,7 +176,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ADC" />
+    <Folder Include="ADC\tests" />
+    <Folder Include="digital_IO" />
+    <Folder Include="encoders" />
     <Folder Include="serial" />
+    <Folder Include="serial\tests" />
     <Folder Include="util" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />

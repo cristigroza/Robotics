@@ -1,5 +1,6 @@
 #include "serial.h"
 #include <pololu/orangutan.h>
+
 #include "../util/util.h"
 
 char is_serial_init = 0;
@@ -22,7 +23,6 @@ void init_serial(){
 }
 
 
-
 void serial_send_string(char *str)
 {
 	while (*str != 0x00)
@@ -31,7 +31,6 @@ void serial_send_string(char *str)
 		str++;
 	}
 }
-
 
 void serial_send_char(char ms_char){
 	if (is_serial_init)

@@ -1,41 +1,24 @@
 #include <pololu/orangutan.h>
 #include "serial/serial.h"
+#include "serial/tests/serialTests.h"
+#include "digital_IO/digital_IO.h"
+#include "encoders/encoders.h"
 
-void test_char();
-void test_string();
-void test_num();
+
+
 int main()
 {
 	init_serial();
+	//init_analog_reader();
+	//init_digital_IO();
+	init_encoders();
+
 	while(1)
 	{
-		test_char();
-		//test_string();
-		//test_num();
+		show_m1_encoder_value();
+		//test_if_pin_B0_is_high_and_send_on_uart();
+		//run_serial_tests();
+		//run_analog_reader_tests();
 	}
 	return 0;
-}
-
-void test_num(){
-	serial_send_number(100);
-}
-void test_string(){
-	char *merge="Merge\r\n";
-	serial_send_string(merge);
-}
-void test_char(){
-	//serial_send_char('\r');
-	//serial_send_char('\n');
-	serial_send_char('t');
-	delay_ms(1000);
-	//serial_send_char('e');
-	//delay_ms(1000);
-	//serial_send_char('s');
-	//delay_ms(1000);
-	//serial_send_char('t');
-	//delay_ms(1000);
-	
-	//log_char('\r');
-	//log_char('\n');
-	//delay_ms(1000);
 }

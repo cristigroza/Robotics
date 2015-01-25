@@ -1,5 +1,5 @@
-#ifndef INIT_LOGGER
-#define INIT_LOGGER
+#ifndef INIT_SERIAL
+#define INIT_SERIAL
 
 void init_serial();
 void serial_send_char(char message);
